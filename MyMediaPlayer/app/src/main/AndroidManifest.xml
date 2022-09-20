@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mymediaplayer">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMediaPlayer"
         tools:targetApi="31">
+
+        <service
+            android:name=".MediaService"
+            android:label="MediaService" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
