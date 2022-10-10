@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">BPAAI - SM1</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="message_welcome_page">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
+    <string name="title_welcome_page">Selamat datang di Dicoding!</string>
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Masukkan dulu datamu ya</string>
+    <string name="title_login_page">Sudah siap untuk upgrade skill?</string>
+    <string name="name">Nama</string>
+    <string name="copyright">© 2021 Dicoding</string>
+    <string name="message_main_page">Selamat Belajar di Dicoding.</string>
+    <string name="greeting">Halo %1$s,</string>
+    <string name="logout">Keluar</string>
+
+    <string name="login_success">Login Success</string>
+    <string name="login_error">Login Error. Please try again</string>
+    <string name="logout_success">Logout Success</string>
+    <string name="register_success">Register Success</string>
+
+<!--After Login-->
+    <string name="created_at_format">Created At : %s</string>
+    <string name="location_format">Location : %s</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="clear">Clear</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="create_story">Create Story</string>
+    <string name="data_invalid">Data Invalid</string>
+    <string name="camera_granted">Camera Permision has been granted. You able to upload story</string>
+    <string name="camera_not_granted">Camera Permission is needed to use camera</string>
+    <string name="choose_picture">Choose a Picture</string>
+
+<!--Detail-->
+    <string name="transition_detail_photo" translatable="false">transition_detail_photo</string>
+    <string name="transition_detail_name" translatable="false">transition_detail_name</string>
+    <string name="transition_detail_created_at" translatable="false">transition_detail_created_at</string>
+    <string name="preview_picture">Preview Picture</string>
+    <string name="detail_picture">Detail Picture</string>
+
+</resources>
