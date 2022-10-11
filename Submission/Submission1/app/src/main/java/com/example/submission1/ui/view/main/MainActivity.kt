@@ -5,21 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,7 +22,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission1.R
 import com.example.submission1.adapter.StoryListAdapter
 import com.example.submission1.databinding.ActivityMainBinding
-import com.example.submission1.ui.view.login.LoginActivity
+import com.example.submission1.ui.view.create.CreateStoryActivity
+import com.example.submission1.ui.view.welcome.WelcomeActivity
 import com.example.submission1.util.AppPreferences
 import com.example.submission1.util.Constants
 import com.example.submission1.util.ViewModelFactory
@@ -65,22 +61,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        setupView()
         setupViewModel()
-        setupAction()
-    }
-
-    private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
     }
 
     private fun setupViewModel() {
@@ -90,15 +71,6 @@ class MainActivity : AppCompatActivity() {
                 this@MainActivity,
                 ViewModelFactory(appPreferences)
             )[MainViewModel::class.java]
-
-//        mainViewModel.getUser().observe(this, { user ->
-//            if (user.isLogin){
-//                binding.nameTextView.text = getString(R.string.greeting, user.name)
-//            } else {
-//                startActivity(Intent(this, WelcomeActivity::class.java))
-//                finish()
-//            }
-//        })
 
         binding.mainRvStories.adapter = storyListAdapter
 
@@ -114,15 +86,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mainFabCreate.setOnClickListener {
-//            if (!isPermissionGranted(Manifest.permission.CAMERA)) {
-//                ActivityCompat.requestPermissions(
-//                    this,
-//                    arrayOf(Manifest.permission.CAMERA),
-//                    REQUEST_PERMISSION_CODE
-//                )
-//            } else {
-//                intentCreateStoryResult.launch(Intent(this, CreateStoryActivity::class.java))
-//            }
+            if (!isPermissionGranted(Manifest.permission.CAMERA)) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.CAMERA),
+                    REQUEST_PERMISSION_CODE
+                )
+            } else {
+                intentCreateStoryResult.launch(Intent(this, CreateStoryActivity::class.java))
+            }
         }
 
         mainViewModel.isLoading().observe(this) { isLoading ->
@@ -139,7 +111,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // diberi delay karena saat setelah login ada bug dimana bearer token belum bisa diambil saat request
         Handler(Looper.getMainLooper()).postDelayed({
             mainViewModel.loadStories(null, null, Location.LOCATION_OFF)
         }, 250)
@@ -159,7 +130,7 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.logout_success),
                 Toast.LENGTH_SHORT
             ).show()
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
             finish()
         }
 
@@ -188,11 +159,5 @@ class MainActivity : AppCompatActivity() {
             this,
             permission
         ) == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun setupAction() {
-//        binding.logoutButton.setOnClickListener {
-//            mainViewModel.logout()
-//        }
     }
 }

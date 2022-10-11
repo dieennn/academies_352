@@ -2,6 +2,7 @@ package com.example.submission1.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
@@ -50,6 +51,7 @@ class StoryListAdapter :
         // TODO pakai interface dgn holder nya...
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
+            Log.d("Data detail ", data.toString())
             intent.putExtra(Constants.INTENT_MAIN_TO_DETAIL, data)
             context.startActivity(
                 intent,

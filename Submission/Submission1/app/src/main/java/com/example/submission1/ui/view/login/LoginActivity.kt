@@ -9,27 +9,24 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.example.submission1.R
 import com.example.submission1.databinding.ActivityLoginBinding
-import com.example.submission1.model.UserModel
-import com.example.submission1.model.UserPreference
 import com.example.submission1.ui.view.main.MainActivity
 import com.example.submission1.util.AppPreferences
 import com.example.submission1.util.Constants
+import com.example.submission1.util.SingleEvent
 import com.example.submission1.util.ViewModelFactory
+import com.example.submission1.util.response.LoginResponse
 
-//private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var user: UserModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,51 +54,54 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val appPreferences = AppPreferences.getInstance(dataStore)
-        loginViewModel = ViewModelProvider(
-            this@LoginActivity,
-            ViewModelFactory(appPreferences)
-        )[LoginViewModel::class.java]
-
-//        loginViewModel.getUser().observe(this, { user ->
-//            this.user = user
-//        })
+        loginViewModel =
+            ViewModelProvider(
+                this@LoginActivity,
+                ViewModelFactory(appPreferences)
+            )[LoginViewModel::class.java]
     }
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
-            val email = binding.emailEditText.text.toString()
-            val password = binding.passwordEditText.text.toString()
-            when {
-                email.isEmpty() -> {
-                    binding.emailEditTextLayout.error = "Masukkan email"
+            if (!binding.edLoginEmail.isError && !binding.edLoginPassword.isError) {
+                loginViewModel.login(
+                    binding.edLoginEmail.text.toString(),
+                    binding.edLoginPassword.text.toString()
+                )
+            } else {
+                Toast.makeText(
+                    this@LoginActivity,
+                    getString(R.string.login_form_error),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        loginViewModel.getLoginData().observe(this@LoginActivity) { loginData: LoginResponse ->
+            if (!(loginData.error as Boolean)) {
+                Toast.makeText(
+                    this@LoginActivity,
+                    getString(R.string.login_success),
+                    Toast.LENGTH_SHORT
+                ).show()
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            }
+        }
+
+        loginViewModel.getLoginError()
+            .observe(this@LoginActivity) { loginError: SingleEvent<String> ->
+                loginError.getData()?.let {
+                    Toast.makeText(this@LoginActivity, it, Toast.LENGTH_SHORT).show()
                 }
-                password.isEmpty() -> {
-                    binding.passwordEditTextLayout.error = "Masukkan password"
-                }
-                email != user.email -> {
-                    binding.emailEditTextLayout.error = "Email tidak sesuai"
-                }
-                password != user.password -> {
-                    binding.passwordEditTextLayout.error = "Password tidak sesuai"
-                }
-                else -> {
-//                    loginViewModel.login()
-//                    AlertDialog.Builder(this).apply {
-//                        setTitle("Yeah!")
-//                        setMessage("Anda berhasil login. Sudah tidak sabar untuk belajar ya?")
-//                        setPositiveButton("Lanjut") { _, _ ->
-//                            val intent = Intent(context, MainActivity::class.java)
-//                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                            startActivity(intent)
-//                            finish()
-//                        }
-//                        create()
-//                        show()
-//                    }
-                    loginViewModel.login(
-                        email, password
-                    )
-                }
+            }
+
+        loginViewModel.isLoading().observe(this@LoginActivity) { isLoading: Boolean ->
+            binding.apply {
+                loginProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+                loginButton.isEnabled = !isLoading
+                edLoginEmail.isEnabled = !isLoading
+                edLoginPassword.isEnabled = !isLoading
             }
         }
     }
@@ -117,9 +117,9 @@ class LoginActivity : AppCompatActivity() {
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(500)
         val message = ObjectAnimator.ofFloat(binding.messageTextView, View.ALPHA, 1f).setDuration(500)
         val email = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(500)
-        val emailEdit = ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(500)
+        val emailEdit = ObjectAnimator.ofFloat(binding.edLoginEmail, View.ALPHA, 1f).setDuration(500)
         val password = ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA, 1f).setDuration(500)
-        val passwordEdit = ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(500)
+        val passwordEdit = ObjectAnimator.ofFloat(binding.edLoginPassword, View.ALPHA, 1f).setDuration(500)
 
         AnimatorSet().apply {
             playSequentially(title, message, email, emailEdit, password, passwordEdit, login)

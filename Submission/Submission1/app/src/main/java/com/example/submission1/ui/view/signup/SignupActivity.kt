@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -57,7 +58,7 @@ class SignupActivity : AppCompatActivity() {
 //            ViewModelFactory(UserPreference.getInstance(dataStore))
 //        )[SignupViewModel::class.java]
         val appPreferences = AppPreferences.getInstance(dataStore)
-        val registerViewModel =
+        signupViewModel =
             ViewModelProvider(
                 this@SignupActivity,
                 ViewModelFactory(appPreferences)
@@ -71,10 +72,13 @@ class SignupActivity : AppCompatActivity() {
             val password = binding.passwordEditText.text.toString()
             when {
                 name.isEmpty() -> {
-                    binding.nameEditTextLayout.error = "Masukkan email"
+                    binding.nameEditTextLayout.error = "Masukkan nama"
                 }
                 email.isEmpty() -> {
                     binding.emailEditTextLayout.error = "Masukkan email"
+                }
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    binding.emailEditTextLayout.error = "Format email salah"
                 }
                 password.isEmpty() -> {
                     binding.passwordEditTextLayout.error = "Masukkan password"
@@ -95,6 +99,28 @@ class SignupActivity : AppCompatActivity() {
                     )
                 }
             }
+        }
+
+        signupViewModel.getRegisterData().observe(this@SignupActivity) { registerResponse ->
+            if (!(registerResponse.error as Boolean)) {
+                Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT)
+                    .show()
+                finish()
+            }
+        }
+
+        signupViewModel.getRegisterError().observe(this@SignupActivity) { registerError ->
+            registerError.getData()?.let {
+                Toast.makeText(this@SignupActivity, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        signupViewModel.isLoading().observe(this@SignupActivity) { isLoading: Boolean ->
+            binding.signupProggress.visibility = if (isLoading) View.VISIBLE else View.GONE
+            binding.signupButton.isEnabled = !isLoading
+            binding.nameEditText.isEnabled = !isLoading
+            binding.emailEditText.isEnabled = !isLoading
+            binding.passwordEditText.isEnabled = !isLoading
         }
     }
 

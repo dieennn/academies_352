@@ -20,9 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Submission1">
         <activity
-            android:name=".ui.view.detail.DetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.view.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Submission1.NoActionBar">
@@ -41,6 +38,8 @@
         <activity
             android:name=".ui.view.login.LoginActivity"
             android:exported="false" />
+
+<!--        AFTER LOGIN-->
         <activity
             android:name=".ui.view.main.MainActivity"
             android:exported="true">
@@ -50,6 +49,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.view.create.CreateStoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.detail.DetailActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.submission1"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
 
 </manifest>

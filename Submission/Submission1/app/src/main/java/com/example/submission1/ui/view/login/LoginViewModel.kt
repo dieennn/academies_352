@@ -1,8 +1,6 @@
 package com.example.submission1.ui.view.login
 
 import androidx.lifecycle.*
-import com.example.submission1.model.UserModel
-import com.example.submission1.model.UserPreference
 import com.example.submission1.service.UNEXPECTED_DATA_ERROR
 import com.example.submission1.service.UNEXPECTED_ERROR
 import com.example.submission1.service.formatResponseCode
