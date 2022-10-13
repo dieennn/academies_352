@@ -53,6 +53,7 @@
         <activity
             android:name=".ui.view.create.CreateStoryActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.view.detail.DetailActivity"
             android:exported="false" />

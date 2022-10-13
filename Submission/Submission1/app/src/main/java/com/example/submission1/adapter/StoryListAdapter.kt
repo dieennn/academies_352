@@ -2,7 +2,6 @@ package com.example.submission1.adapter
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
@@ -13,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.submission1.R
 import com.example.submission1.databinding.ItemStoryBinding
-import com.example.submission1.service.formatCreatedAt
 import com.example.submission1.ui.view.detail.DetailActivity
 import com.example.submission1.util.Constants
+import com.example.submission1.util.covertTimeToText
 import com.example.submission1.util.response.Story
 
 class StoryListAdapter :
     ListAdapter<Story, StoryListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         return ViewHolder(
             ItemStoryBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -35,6 +35,7 @@ class StoryListAdapter :
         val data = getItem(holder.adapterPosition)
         val context = holder.itemView.context
 
+
         Glide.with(holder.itemView.context)
             .load(data.photoUrl)
             .placeholder(R.drawable.ic_baseline_broken_image_24)
@@ -45,13 +46,11 @@ class StoryListAdapter :
         holder.binding.itemStoryTvName.text = data.name
         holder.binding.itemStoryTvCreatedAt.text = String.format(
             holder.itemView.context.getString(R.string.created_at_format),
-            formatCreatedAt(data.createdAt ?: "")
+            covertTimeToText(data.createdAt).toString()
         )
 
-        // TODO pakai interface dgn holder nya...
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            Log.d("Data detail ", data.toString())
             intent.putExtra(Constants.INTENT_MAIN_TO_DETAIL, data)
             context.startActivity(
                 intent,

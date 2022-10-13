@@ -35,7 +35,6 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             if (token == null) {
-                // startActivity(Intent(this, LoginActivity::class.java))
                 startActivity(Intent(this, WelcomeActivity::class.java))
             } else {
                 startActivity(Intent(this, MainActivity::class.java))

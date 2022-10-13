@@ -17,19 +17,13 @@ class EmailField : AppCompatEditText {
     var isError: Boolean = false
 
     constructor(context: Context) : super(context) {
-        initialize()
+        init()
     }
-
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        initialize()
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        init()
     }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        initialize()
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        init()
     }
 
     override fun onCreateDrawableState(extraSpace: Int): IntArray {
@@ -48,14 +42,12 @@ class EmailField : AppCompatEditText {
         refreshDrawableState()
     }
 
-    private fun initialize() {
+    private fun init() {
         bgDrawable = ContextCompat.getDrawable(context, R.drawable.bg_edit_text) as Drawable
-
         background = bgDrawable
 
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -69,9 +61,7 @@ class EmailField : AppCompatEditText {
             }
 
             override fun afterTextChanged(s: Editable?) {
-
             }
-
         })
     }
 }
