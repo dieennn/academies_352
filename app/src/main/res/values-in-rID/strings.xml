@@ -1,0 +1,52 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="Typos">BPAAI - SM1</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="message_welcome_page">Abadikan momen berharga bersama Intfd Story sekarang!</string>
+    <string name="title_welcome_page">Selamat datang di Intfd Story!</string>
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="email">Alamat Surel</string>
+    <string name="password">Kata Sandi</string>
+    <string name="message_login_page">Masukkan dulu datamu ya</string>
+    <string name="title_login_page">Siap untuk berbagi momen?</string>
+    <string name="name">Nama</string>
+    <string name="copyright">© 2022 Intfd</string>
+
+    <!--Menu-->
+    <string name="logout">Keluar</string>
+    <string name="change_languange">Ganti Bahasa</string>
+
+    <!--Login form-->
+    <string name="login_form_error">Silahkan isi email dan password sesuai yang ditentukan</string>
+    <string name="register_form_error">Silahkan isi nama, email, dan password sesuai yang ditentukan</string>
+    <string name="invalid_name">Nama wajib diisi</string>
+    <string name="invalid_email">Alamat Surel wajib diisi</string>
+    <string name="invalid_password">Kata sandi harus minimal 6 karakter</string>
+
+    <string name="login_success">Login Berhasil</string>
+    <string name="login_error">Kesalahan Masuk. Silakan coba lagi</string>
+    <string name="logout_success">Keluar Berhasil</string>
+    <string name="register_success">Daftar Sukses</string>
+
+    <!--After Login-->
+    <string name="created_at_format">Dibuat pada : %s</string>
+    <string name="location_format">Lokasi : %s</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="clear">Bersihkan</string>
+    <string name="description">Deskripsi</string>
+    <string name="submit">Kirim</string>
+    <string name="create_story">Buat Cerita</string>
+    <string name="data_invalid">Data Tidak Valid</string>
+    <string name="camera_granted">Izin Kamera telah diberikan. Anda dapat mengunggah cerita</string>
+    <string name="camera_not_granted">Izin Kamera diperlukan untuk menggunakan kamera</string>
+    <string name="choose_picture">Pilih Gambar</string>
+
+    <!--Detail-->
+    <string name="transition_detail_photo" translatable="false">transition_detail_photo</string>
+    <string name="transition_detail_name" translatable="false">transition_detail_name</string>
+    <string name="transition_detail_created_at" translatable="false">transition_detail_created_at</string>
+    <string name="preview_picture">Pratinjau Gambar</string>
+    <string name="detail_picture">Detail Gambar</string>
+
+</resources>
