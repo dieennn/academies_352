@@ -22,4 +22,11 @@
     <color name="teal_medium">#ff529490</color>
     <color name="teal_light">#ffb0d7d1</color>
     <color name="teal_dark">#ff2a5e60</color>
+
+    <!--custom-->
+    <color name="indigo_300">#7986CB</color>
+    <color name="blue_300">#64B5F6</color>
+    <color name="secondary_medium">#5cc3f3</color>
+
+
 </resources>

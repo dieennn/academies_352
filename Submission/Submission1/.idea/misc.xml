@@ -6,19 +6,27 @@
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable-v24/ic_close_black_24dp.xml" value="0.11" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/bg_button.xml" value="0.1795" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/bg_edit_text.xml" value="0.1925" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.11" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/ic_baseline_broken_image_24.xml" value="0.1555" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2075" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2075" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2075" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout-land/activity_create_story.xml" value="0.22" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout-land/activity_detail.xml" value="0.14858906525573193" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout-land/activity_login.xml" value="0.12389770723104056" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout-land/activity_signup.xml" value="0.36754176610978523" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout-land/activity_splash.xml" value="0.18" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_create_story.xml" value="0.16979166666666667" />
-        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_detail.xml" value="0.11979166666666667" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_login.xml" value="0.1265625" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_main.xml" value="0.184375" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_signup.xml" value="0.17916666666666667" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/activity_welcome.xml" value="0.13958333333333334" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/layout/item_story.xml" value="0.184375" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/menu/menu_main.xml" value="0.18333333333333332" />
+        <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.155" />
         <entry key="..\:/Playground/Android/Dicoding/bpaai/Submission/Submission1/app/src/main/res/xml/xml_path.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.194" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1693840579710145" />

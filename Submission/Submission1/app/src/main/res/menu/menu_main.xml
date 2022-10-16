@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_main_change_languange"
+        android:title="@string/change_languange"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menu_main_logout"
         android:title="@string/logout"
         app:showAsAction="never" />

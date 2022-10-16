@@ -3,8 +3,8 @@ package com.example.submission1.service
 import com.example.submission1.util.Constants
 import com.example.submission1.util.response.CreateStoryResponse
 import com.example.submission1.util.response.LoginResponse
-import com.example.submission1.util.response.RegisterResponse
 import com.example.submission1.util.response.ReadStoryResponse
+import com.example.submission1.util.response.RegisterResponse
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
@@ -13,8 +13,6 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 const val UNEXPECTED_ERROR = "Unexpected Error"
 const val UNEXPECTED_DATA_ERROR = "Unexpected Data Error"
@@ -81,23 +79,4 @@ fun formatResponseCode(code: Int): String {
     } else {
         UNEXPECTED_ERROR
     }
-}
-
-fun formatCreatedAt(dateString: String): String {
-    var result = ""
-
-    try {
-        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
-        sdf.timeZone = TimeZone.getTimeZone("GMT")
-
-        val date = sdf.parse(dateString)
-
-        result =
-            date?.let {
-                SimpleDateFormat("yyyy-mm-dd HH:mm:ss", Locale.getDefault()).format(it)
-            }.toString()
-    } catch (e: Exception) {
-    }
-
-    return result
 }

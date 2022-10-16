@@ -1,6 +1,9 @@
 package com.example.submission1.ui.view.login
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.submission1.service.UNEXPECTED_DATA_ERROR
 import com.example.submission1.service.UNEXPECTED_ERROR
 import com.example.submission1.service.formatResponseCode

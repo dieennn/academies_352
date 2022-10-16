@@ -1,5 +1,6 @@
 package com.example.submission1.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
@@ -17,12 +18,12 @@ fun getPlaceholderImage(context: Context): Bitmap? {
         ?.toBitmap(256, 256)
 }
 
+@SuppressLint("SimpleDateFormat")
 fun covertTimeToText(dataDate: String?): String? {
     var convTime: String? = null
-    val prefix = ""
     val suffix = "Ago"
     try {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val pasTime = dateFormat.parse(dataDate)
         val nowTime = Date()
         val dateDiff = nowTime.time - pasTime.time
@@ -52,4 +53,25 @@ fun covertTimeToText(dataDate: String?): String? {
         Log.e("ConvTimeE", e.message!!)
     }
     return convTime
+}
+
+fun formatCreatedAt(dateString: String): String {
+    var result = ""
+
+    try {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+        sdf.timeZone = TimeZone.getTimeZone("GMT")
+
+        val date = sdf.parse(dateString)
+
+        result =
+            date?.let {
+                SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(it)
+            }.toString()
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Log.e("ConvTimeE", e.message!!)
+    }
+
+    return result
 }

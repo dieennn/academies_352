@@ -15,6 +15,7 @@ import com.example.submission1.databinding.ItemStoryBinding
 import com.example.submission1.ui.view.detail.DetailActivity
 import com.example.submission1.util.Constants
 import com.example.submission1.util.covertTimeToText
+import com.example.submission1.util.formatCreatedAt
 import com.example.submission1.util.response.Story
 
 class StoryListAdapter :
@@ -38,7 +39,7 @@ class StoryListAdapter :
 
         Glide.with(holder.itemView.context)
             .load(data.photoUrl)
-            .placeholder(R.drawable.ic_baseline_broken_image_24)
+            .placeholder(R.drawable.logo)
             .error(R.drawable.ic_baseline_broken_image_24)
             .into(holder.binding.itemStoryIvImg)
         holder.binding.itemStoryIvImg.contentDescription = data.description
@@ -46,7 +47,7 @@ class StoryListAdapter :
         holder.binding.itemStoryTvName.text = data.name
         holder.binding.itemStoryTvCreatedAt.text = String.format(
             holder.itemView.context.getString(R.string.created_at_format),
-            covertTimeToText(data.createdAt).toString()
+            covertTimeToText(formatCreatedAt(data.createdAt.toString())).toString()
         )
 
         holder.itemView.setOnClickListener {

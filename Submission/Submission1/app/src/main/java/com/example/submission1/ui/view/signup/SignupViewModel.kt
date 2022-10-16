@@ -1,12 +1,8 @@
 package com.example.submission1.view.signup
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.submission1.model.UserModel
-import com.example.submission1.model.UserPreference
 import com.example.submission1.service.UNEXPECTED_DATA_ERROR
 import com.example.submission1.service.UNEXPECTED_ERROR
 import com.example.submission1.service.formatResponseCode
@@ -15,7 +11,6 @@ import com.example.submission1.util.AppPreferences
 import com.example.submission1.util.SingleEvent
 import com.example.submission1.util.response.RegisterResponse
 import com.google.gson.Gson
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

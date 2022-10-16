@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="Typos">BPAAI - SM1</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Ketik</string>
+    <string name="message_welcome_page">Abadikan momen sing larang karo Intfd Story saiki!</string>
+    <string name="title_welcome_page">Sugeng rawuh ing Intfd Story!</string>
+    <string name="title_signup_page">Lengkapi data sampeyan ing ngisor iki</string>
+    <string name="email">Alamat Email</string>
+    <string name="password">Sandhi</string>
+    <string name="message_login_page">Mangga ketik data sampeyan dhisik</string>
+    <string name="title_login_page">Siap nuduhake wayahe?</string>
+    <string name="name">Jeneng</string>
+    <string name="copyright">© 2022 Intfd</string>
+
+    <!--Menu-->
+    <string name="logout">Metu</string>
+    <string name="change_languange">Ganti Basa</string>
+
+    <!--Login form-->
+    <string name="login_form_error">Mangga isi email lan sandhi kaya sing wis ditemtokake</string>
+    <string name="register_form_error">Mangga isi jeneng, email, lan sandhi kaya sing wis ditemtokake</string>
+    <string name="invalid_name">Jeneng dibutuhake</string>
+    <string name="invalid_email">Alamat Email dibutuhake</string>
+    <string name="invalid_password">Sandhi kudu paling sethithik 6 karakter</string>
+
+    <string name="login_success">Login Sukses</string>
+    <string name="login_error">Kesalahan Mlebet. Coba maneh</string>
+    <string name="logout_success">Metu Sukses</string>
+    <string name="register_success">Dhaptar Sukses</string>
+
+    <!--After Login-->
+    <string name="created_at_format">Digawe ing : %s</string>
+    <string name="location_format">Lokasi : %s</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="clear">Resik</string>
+    <string name="description">Deskripsi</string>
+    <string name="submit">Kirim</string>
+    <string name="create_story">Gawe Crita</string>
+    <string name="data_invalid">Data Ora Sah</string>
+    <string name="camera_granted">Idin kamera wis diwenehake. Sampeyan bisa ngunggah crita</string>
+    <string name="camera_not_granted">Ijin kamera dibutuhake kanggo nggunakake kamera</string>
+    <string name="choose_picture">Pilih Gambar</string>
+
+    <!--Detail-->
+    <string name="transition_detail_photo" translatable="false">transition_detail_photo</string>
+    <string name="transition_detail_name" translatable="false">transition_detail_name</string>
+    <string name="transition_detail_created_at" translatable="false">transition_detail_created_at</string>
+    <string name="preview_picture">Preview Gambar</string>
+    <string name="detail_picture">Rincian Gambar</string>
+
+</resources>

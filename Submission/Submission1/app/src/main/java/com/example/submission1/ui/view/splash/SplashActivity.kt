@@ -8,7 +8,6 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.submission1.databinding.ActivitySplashBinding
-import com.example.submission1.ui.view.login.LoginActivity
 import com.example.submission1.ui.view.main.MainActivity
 import com.example.submission1.ui.view.welcome.WelcomeActivity
 import com.example.submission1.util.AppPreferences

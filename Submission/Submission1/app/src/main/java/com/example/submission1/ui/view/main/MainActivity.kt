@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -132,6 +133,10 @@ class MainActivity : AppCompatActivity() {
             ).show()
             startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
             finish()
+        }
+
+        if(item.itemId == R.id.menu_main_change_languange) {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
 
         return true

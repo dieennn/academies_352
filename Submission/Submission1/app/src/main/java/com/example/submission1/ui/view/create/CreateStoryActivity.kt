@@ -20,14 +20,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.submission1.BuildConfig
 import com.example.submission1.R
-import com.example.submission1.util.Constants
-import java.io.*
 import com.example.submission1.databinding.ActivityCreateStoryBinding
 import com.example.submission1.ui.view.main.MainActivity
 import com.example.submission1.util.AppPreferences
+import com.example.submission1.util.Constants
 import com.example.submission1.util.ViewModelFactory
 import com.example.submission1.util.getPlaceholderImage
 import com.example.submission1.util.response.CreateStoryResponse
+import java.io.*
 
 class CreateStoryActivity : AppCompatActivity() {
     private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)
@@ -45,7 +45,7 @@ class CreateStoryActivity : AppCompatActivity() {
 
                 Glide.with(this)
                     .load(resultImage)
-                    .placeholder(R.drawable.ic_baseline_broken_image_24)
+                    .placeholder(R.drawable.logo)
                     .error(R.drawable.ic_baseline_broken_image_24)
                     .into(binding.createIvPreview)
             }
@@ -111,6 +111,7 @@ class CreateStoryActivity : AppCompatActivity() {
         }
 
         binding.createBtnClear.setOnClickListener {
+            binding.createEtDescription.text = null
             currentImageFile = null
             Glide.with(this)
                 .load(

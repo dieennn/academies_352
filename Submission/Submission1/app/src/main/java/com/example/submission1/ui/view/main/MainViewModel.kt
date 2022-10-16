@@ -1,18 +1,21 @@
 package com.example.submission1.ui.view.main
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.submission1.service.*
 import com.example.submission1.util.AppPreferences
 import com.example.submission1.util.SingleEvent
 import com.example.submission1.util.response.LoginResponse
+import com.example.submission1.util.response.ReadStoryResponse
 import com.google.gson.Gson
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.submission1.util.response.ReadStoryResponse
-import kotlinx.coroutines.flow.first
 
 class MainViewModel(private val appPreferences: AppPreferences) : ViewModel() {
     private val storiesData: MutableLiveData<ReadStoryResponse> = MutableLiveData()

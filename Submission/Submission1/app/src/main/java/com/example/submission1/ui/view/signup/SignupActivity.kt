@@ -5,19 +5,15 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.submission1.R
 import com.example.submission1.databinding.ActivitySignupBinding
-import com.example.submission1.model.UserModel
 import com.example.submission1.util.AppPreferences
 import com.example.submission1.util.Constants
 import com.example.submission1.util.ViewModelFactory
@@ -67,37 +63,54 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            val name = binding.nameEditText.text.toString()
-            val email = binding.emailEditText.text.toString()
-            val password = binding.passwordEditText.text.toString()
-            when {
-                name.isEmpty() -> {
-                    binding.nameEditTextLayout.error = "Masukkan nama"
-                }
-                email.isEmpty() -> {
-                    binding.emailEditTextLayout.error = "Masukkan email"
-                }
-                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    binding.emailEditTextLayout.error = "Format email salah"
-                }
-                password.isEmpty() -> {
-                    binding.passwordEditTextLayout.error = "Masukkan password"
-                }
-                else -> {
-//                    signupViewModel.saveUser(UserModel(name, email, password, false))
-//                    AlertDialog.Builder(this).apply {
-//                        setTitle("Yeah!")
-//                        setMessage("Akunnya sudah jadi nih. Yuk, login dan belajar coding.")
-//                        setPositiveButton("Lanjut") { _, _ ->
-//                            finish()
-//                        }
-//                        create()
-//                        show()
-//                    }
-                    signupViewModel.register(
-                        name, email, password
-                    )
-                }
+//            val name = binding.nameEditText.text.toString()
+//            val email = binding.emailEditText.text.toString()
+//            val password = binding.passwordEditText.text.toString()
+//            when {
+//                name.isEmpty() -> {
+//                    binding.nameEditText.error = "Masukkan nama"
+//                }
+//                email.isEmpty() -> {
+//                    binding.emailEditText.error = "Masukkan email"
+//                }
+//                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+//                    binding.emailEditText.error = "Format email salah"
+//                }
+//                password.isEmpty() -> {
+//                    binding.passwordEditText.error = "Masukkan password"
+//                }
+//                else -> {
+////                    signupViewModel.saveUser(UserModel(name, email, password, false))
+////                    AlertDialog.Builder(this).apply {
+////                        setTitle("Yeah!")
+////                        setMessage("Akunnya sudah jadi nih. Yuk, login dan belajar coding.")
+////                        setPositiveButton("Lanjut") { _, _ ->
+////                            finish()
+////                        }
+////                        create()
+////                        show()
+////                    }
+//                    signupViewModel.register(
+//                        name, email, password
+//                    )
+//                }
+//            }
+
+            if (!binding.nameEditText.isError &&
+                !binding.emailEditText.isError &&
+                !binding.passwordEditText.isError
+            ) {
+                signupViewModel.register(
+                    binding.nameEditText.text.toString(),
+                    binding.emailEditText.text.toString(),
+                    binding.passwordEditText.text.toString()
+                )
+            } else {
+                Toast.makeText(
+                    this@SignupActivity,
+                    getString(R.string.register_form_error),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -134,11 +147,11 @@ class SignupActivity : AppCompatActivity() {
         val signup = ObjectAnimator.ofFloat(binding.signupButton, View.ALPHA, 1f).setDuration(500)
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(500)
         val name = ObjectAnimator.ofFloat(binding.nameTextView, View.ALPHA, 1f).setDuration(500)
-        val nameEdit = ObjectAnimator.ofFloat(binding.nameEditTextLayout, View.ALPHA, 1f).setDuration(500)
+        val nameEdit = ObjectAnimator.ofFloat(binding.nameEditText, View.ALPHA, 1f).setDuration(500)
         val email = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(500)
-        val emailEdit = ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(500)
+        val emailEdit = ObjectAnimator.ofFloat(binding.emailEditText, View.ALPHA, 1f).setDuration(500)
         val password = ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA, 1f).setDuration(500)
-        val passwordEdit = ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(500)
+        val passwordEdit = ObjectAnimator.ofFloat(binding.passwordEditText, View.ALPHA, 1f).setDuration(500)
 
         AnimatorSet().apply {
             playSequentially(title, name, nameEdit, email, emailEdit, password, passwordEdit, signup)

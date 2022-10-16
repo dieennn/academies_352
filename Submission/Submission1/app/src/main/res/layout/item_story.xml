@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardCornerRadius="@dimen/root_padding"
+    app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:contentDescription="@string/detail_picture"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/image_dicoding" />
+            tools:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/item_story_tv_name"
