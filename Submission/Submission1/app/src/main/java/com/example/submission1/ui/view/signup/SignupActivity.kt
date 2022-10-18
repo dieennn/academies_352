@@ -3,6 +3,7 @@ package com.example.submission1.ui.view.signup
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -14,10 +15,13 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.submission1.R
 import com.example.submission1.databinding.ActivitySignupBinding
+import com.example.submission1.ui.view.main.MainActivity
 import com.example.submission1.util.AppPreferences
 import com.example.submission1.util.Constants
 import com.example.submission1.util.ViewModelFactory
 import com.example.submission1.view.signup.SignupViewModel
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
@@ -33,6 +37,7 @@ class SignupActivity : AppCompatActivity() {
         setupViewModel()
         setupAction()
         playAnimation()
+        isLogin()
     }
 
     private fun setupView() {
@@ -156,6 +161,24 @@ class SignupActivity : AppCompatActivity() {
         AnimatorSet().apply {
             playSequentially(title, name, nameEdit, email, emailEdit, password, passwordEdit, signup)
             start()
+        }
+    }
+
+
+    private fun isLogin() {
+        val appPreferences = AppPreferences.getInstance(dataStore)
+
+        var bearerToken: String
+
+        runBlocking {
+            bearerToken = appPreferences.getTokenPrefs().first() ?: ""
+        }
+
+        if (bearerToken.isNotEmpty()) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            finish()
+            startActivity(intent)
         }
     }
 }

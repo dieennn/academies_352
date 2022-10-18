@@ -165,4 +165,20 @@ class MainActivity : AppCompatActivity() {
             permission
         ) == PackageManager.PERMISSION_GRANTED
     }
+
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            val setIntent = Intent(Intent.ACTION_MAIN)
+            setIntent.addCategory(Intent.CATEGORY_HOME)
+            setIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            finish()
+            startActivity(setIntent)
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, getString(R.string.twice_back), Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
 }

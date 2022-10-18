@@ -21,6 +21,8 @@ import com.example.submission1.util.Constants
 import com.example.submission1.util.SingleEvent
 import com.example.submission1.util.ViewModelFactory
 import com.example.submission1.util.response.LoginResponse
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)
 
@@ -37,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         setupViewModel()
         setupAction()
         playAnimation()
+        isLogin()
     }
 
     private fun setupView() {
@@ -124,6 +127,23 @@ class LoginActivity : AppCompatActivity() {
         AnimatorSet().apply {
             playSequentially(title, message, email, emailEdit, password, passwordEdit, login)
             start()
+        }
+    }
+
+    private fun isLogin() {
+        val appPreferences = AppPreferences.getInstance(dataStore)
+
+        var bearerToken: String
+
+        runBlocking {
+            bearerToken = appPreferences.getTokenPrefs().first() ?: ""
+        }
+
+        if (bearerToken.isNotEmpty()) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            finish()
+            startActivity(intent)
         }
     }
 

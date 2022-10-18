@@ -49,5 +49,6 @@
     <string name="transition_detail_created_at" translatable="false">transition_detail_created_at</string>
     <string name="preview_picture">Preview Gambar</string>
     <string name="detail_picture">Rincian Gambar</string>
+    <string name="twice_back">Pencet tombol balik ping pindo kanggo metu</string>
 
 </resources>
