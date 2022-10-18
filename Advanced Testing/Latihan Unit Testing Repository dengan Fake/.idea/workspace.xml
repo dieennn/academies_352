@@ -10,7 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9072960e-3636-40de-9c98-d3b7f87eeafa" name="Changes" comment="Latihan Unit Testing Coroutines">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/data/FakeApiService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/data/FakeNewsDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/data/NewsRepositoryTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Latihan Unit Testing Coroutines/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Latihan Unit Testing Coroutines/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,11 +75,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Latihan Unit Testing Repository dengan Fake" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -84,12 +86,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.dicoding.newsapp.data" />
       <recent name="com.dicoding.newsapp.ui.detail" />
       <recent name="com.dicoding.newsapp.ui.list" />
       <recent name="com.dicoding.newsapp.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.NewsViewModelTest">
+  <component name="RunManager" selected="Gradle.NewsRepositoryTest">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="News_App.app.main" />
       <option name="DEPLOY" value="true" />
@@ -168,6 +171,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="NewsRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.dicoding.newsapp.data.NewsRepositoryTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="NewsViewModelTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -225,6 +249,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.NewsRepositoryTest" />
         <item itemvalue="Gradle.NewsViewModelTest" />
         <item itemvalue="Gradle.NewsViewModelTest.when Get HeadlineNews Should Not Null and Return Success" />
         <item itemvalue="Gradle.DateFormatterTest.given correct ISO 8601 format then should format correctly" />
