@@ -9,90 +9,92 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9072960e-3636-40de-9c98-d3b7f87eeafa" name="Changes" comment="Latihan Integration Testing Fragment dengan MockWebServer dan Idling Resource">
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/.idea/Latihan TDD (Test Driven Development).iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/.idea/Latihan Unit Testing Repository dengan Fake.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/androidTest/java/com/dicoding/newsapp/JsonConverter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/androidTest/java/com/dicoding/newsapp/data/local/room/NewsDaoTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/androidTest/java/com/dicoding/newsapp/ui/list/NewsFragmentTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/androidTest/java/com/dicoding/newsapp/utils/DataDummy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/androidTest/java/com/dicoding/newsapp/utils/LiveDataTestUtil.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/assets/success_response.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/NewsRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/Result.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/local/entity/NewsEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/local/room/NewsDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/local/room/NewsDatabase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/remote/response/NewsResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/remote/retrofit/ApiConfig.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/data/remote/retrofit/ApiService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/di/Injection.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/ViewModelFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/detail/NewsDetailActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/detail/NewsDetailViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/list/HomeActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/list/NewsAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/list/NewsFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/list/NewsViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/ui/list/SectionsPagerAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/utils/DateFormatter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/java/com/dicoding/newsapp/utils/EspressoIdlingResource.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_bookmark_white.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_bookmarked_white.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_broken_image_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_error.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_loading.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/drawable/ic_refresh_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/layout/activity_home.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/layout/activity_news_detail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/layout/fragment_news.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/layout/item_news.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/layout/view_error.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/menu/detail_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/values-w820dp/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/MainDispatcherRule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/data/FakeApiService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/data/FakeNewsDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/data/NewsRepositoryTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/ui/detail/NewsDetailViewModelTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/ui/list/NewsViewModelTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/utils/DataDummy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/utils/DateFormatterTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/app/src/test/java/com/dicoding/newsapp/utils/LiveDataTestUtil.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/local.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Latihan Unit Testing E2E/settings.gradle" afterDir="false" />
+    <list default="true" id="9072960e-3636-40de-9c98-d3b7f87eeafa" name="Changes" comment="Latihan Unit Testing Room Database">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Latihan TDD (Test Driven Development).iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Latihan Unit Testing Repository dengan Fake.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/JsonConverter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/data/local/room/NewsDaoTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/ui/list/HomeActivityTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/ui/list/NewsFragmentTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/utils/DataDummy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/utils/LiveDataTestUtil.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/success_response.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/NewsRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/Result.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/local/entity/NewsEntity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/local/room/NewsDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/local/room/NewsDatabase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/remote/response/NewsResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/remote/retrofit/ApiConfig.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/data/remote/retrofit/ApiService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/di/Injection.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/ViewModelFactory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/detail/NewsDetailActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/detail/NewsDetailViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/list/HomeActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/list/NewsAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/list/NewsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/list/NewsViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/ui/list/SectionsPagerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/utils/DateFormatter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/newsapp/utils/EspressoIdlingResource.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bookmark_white.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bookmarked_white.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_broken_image_black.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_error.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_loading.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_refresh_black.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_news_detail.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_news.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_news.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_error.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/detail_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/MainDispatcherRule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/data/FakeApiService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/data/FakeNewsDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/data/NewsRepositoryTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/ui/detail/NewsDetailViewModelTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/ui/list/NewsViewModelTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/utils/DataDummy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/utils/DateFormatterTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/utils/LiveDataTestUtil.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Latihan Unit Testing Fragment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Latihan Unit Testing Fragment/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,8 +130,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Kotlin Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -153,8 +155,8 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Latihan Unit Testing E2E" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/androidTest/java/com/dicoding/newsapp/ui/list" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../a352-android-intermediate-labs/advanced-testing/LatihanAdvancedTesting (end-to-end)" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -182,7 +184,7 @@
       <command value="gradle koverReport" />
     </option>
   </component>
-  <component name="RunManager" selected="Android Instrumented Tests.NewsFragmentTest">
+  <component name="RunManager" selected="Android Instrumented Tests.HomeActivityTest">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="News_App.app.main" />
       <option name="DEPLOY" value="true" />
@@ -236,6 +238,59 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HomeActivityTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="News_App.app.androidTest" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="com.dicoding.newsapp.ui.list.HomeActivityTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="RETENTION_ENABLED" value="No" />
+      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
+      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -420,27 +475,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="NewsDaoTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.dicoding.newsapp.data.local.room.NewsDaoTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:testDebugUnitTest" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Latihan Unit Testing LiveData" />
       <method v="2">
@@ -456,11 +490,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android Instrumented Tests.HomeActivityTest" />
         <item itemvalue="Android Instrumented Tests.NewsFragmentTest" />
         <item itemvalue="Android Instrumented Tests.NewsDaoTest" />
         <item itemvalue="Android Instrumented Tests.saveNews_Success()" />
         <item itemvalue="Gradle.Latihan Unit Testing Room Database [koverReport]" />
-        <item itemvalue="Gradle.NewsDaoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -494,14 +528,7 @@
       <option name="project" value="LOCAL" />
       <updated>1666079929444</updated>
     </task>
-    <task id="LOCAL-00004" summary="Latihan Integration Testing Fragment dengan MockWebServer dan Idling Resource">
-      <created>1666088053707</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1666088053707</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,7 +549,6 @@
     <MESSAGE value="Latihan Unit Testing Coroutines" />
     <MESSAGE value="Latihan Unit Testing Repository dengan Fake" />
     <MESSAGE value="Latihan Unit Testing Room Database" />
-    <MESSAGE value="Latihan Integration Testing Fragment dengan MockWebServer dan Idling Resource" />
-    <option name="LAST_COMMIT_MESSAGE" value="Latihan Integration Testing Fragment dengan MockWebServer dan Idling Resource" />
+    <option name="LAST_COMMIT_MESSAGE" value="Latihan Unit Testing Room Database" />
   </component>
 </project>
