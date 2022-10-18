@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9072960e-3636-40de-9c98-d3b7f87eeafa" name="Changes" comment="Latihan Unit Testing LiveData" />
+    <list default="true" id="9072960e-3636-40de-9c98-d3b7f87eeafa" name="Changes" comment="Latihan TDD (Test Driven Development)">
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/MainDispatcherRule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/dicoding/newsapp/ui/detail/NewsDetailActivityTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Latihan Unit Testing LiveData/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Latihan Unit Testing LiveData/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +78,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Latihan Unit Testing Coroutines" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -82,6 +86,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.dicoding.newsapp.ui.detail" />
       <recent name="com.dicoding.newsapp.ui.list" />
       <recent name="com.dicoding.newsapp.utils" />
     </key>
@@ -244,14 +249,7 @@
       <option name="project" value="LOCAL" />
       <updated>1666074779950</updated>
     </task>
-    <task id="LOCAL-00002" summary="Latihan Unit Testing LiveData">
-      <created>1666077134022</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1666077134022</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +266,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Latihan TDD (Test Driven Development)" />
-    <MESSAGE value="Latihan Unit Testing LiveData" />
-    <option name="LAST_COMMIT_MESSAGE" value="Latihan Unit Testing LiveData" />
+    <option name="LAST_COMMIT_MESSAGE" value="Latihan TDD (Test Driven Development)" />
   </component>
 </project>
