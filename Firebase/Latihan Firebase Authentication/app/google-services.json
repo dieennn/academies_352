@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1095414803760",
+    "project_id": "dicoding-bpaai-8d6e8",
+    "storage_bucket": "dicoding-bpaai-8d6e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095414803760:android:3505178430041e897e2cf5",
+        "android_client_info": {
+          "package_name": "com.dicoding.myfirebasechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095414803760-p76kjek1i0s93tt2o1kpma7vcuo2mt9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.myfirebasechat",
+            "certificate_hash": "8ea76e4e56eabf0ac2d0a297ef5df7111112c4a7"
+          }
+        },
+        {
+          "client_id": "1095414803760-3g5ilqlbjocmvdom5jo7jbhjgbdrb4p5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwlIgM1UPec8oVKEcnSwr0PBkSJ13Izrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095414803760-3g5ilqlbjocmvdom5jo7jbhjgbdrb4p5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
