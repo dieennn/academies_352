@@ -2,13 +2,13 @@ package com.dicoding.myfirebasechat
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.myfirebasechat.databinding.ActivityMainBinding
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
+    private lateinit var adapter: FirebaseMessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,25 @@ class MainActivity : AppCompatActivity() {
             }
             binding.messageEditText.setText("")
         }
+
+        val manager = LinearLayoutManager(this)
+        manager.stackFromEnd = true
+        binding.messageRecyclerView.layoutManager = manager
+
+        val options = FirebaseRecyclerOptions.Builder<Message>()
+            .setQuery(messagesRef, Message::class.java)
+            .build()
+        adapter = FirebaseMessageAdapter(options, firebaseUser.displayName)
+        binding.messageRecyclerView.adapter = adapter
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        adapter.startListening()
+    }
+    public override fun onPause() {
+        adapter.stopListening()
+        super.onPause()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
