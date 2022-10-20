@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-    <com.example.submission1.ui.customview.NameField
+    <com.example.submission2.ui.customview.NameField
         android:alpha="0"
         android:id="@+id/nameEditText"
 
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
-    <com.example.submission1.ui.customview.EmailField
+    <com.example.submission2.ui.customview.EmailField
         android:alpha="0"
         android:id="@+id/emailEditText"
         android:inputType="textEmailAddress"
@@ -110,7 +110,7 @@
 
         app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
-    <com.example.submission1.ui.customview.PasswordField
+    <com.example.submission2.ui.customview.PasswordField
         android:alpha="0"
         android:id="@+id/passwordEditText"
         android:layout_width="0dp"
