@@ -1,23 +1,10 @@
-package com.example.submission2.util.response
+package com.example.submission2.data.network.models
 
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-data class ReadStoryResponse(
-
-    @field:SerializedName("listStory")
-    val listStory: List<Story?>? = null,
-
-    @field:SerializedName("error")
-    val error: Boolean? = null,
-
-    @field:SerializedName("message")
-    val message: String? = null
-)
-
 data class Story(
-
     @field:SerializedName("photoUrl")
     val photoUrl: String? = null,
 

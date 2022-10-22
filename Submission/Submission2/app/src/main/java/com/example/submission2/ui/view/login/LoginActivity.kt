@@ -4,63 +4,60 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.submission2.R
+import com.example.submission2.data.network.APIUtils
+import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.network.Result
+import com.example.submission2.data.network.models.LoginResponse
 import com.example.submission2.databinding.ActivityLoginBinding
 import com.example.submission2.ui.view.main.MainActivity
-import com.example.submission2.util.AppPreferences
 import com.example.submission2.util.Constants
-import com.example.submission2.util.SingleEvent
-import com.example.submission2.util.ViewModelFactory
-import com.example.submission2.util.response.LoginResponse
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
+import com.example.submission2.ui.ViewModelFactory
+import com.google.gson.Gson
+import retrofit2.HttpException
 
-private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupView()
+//        setupView()
         setupViewModel()
         setupAction()
         playAnimation()
-        isLogin()
     }
 
-    private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
-    }
+//    private fun setupView() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            window.insetsController?.hide(WindowInsets.Type.statusBars())
+//        } else {
+//            window.setFlags(
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN
+//            )
+//        }
+//        supportActionBar?.hide()
+//    }
 
     private fun setupViewModel() {
         val appPreferences = AppPreferences.getInstance(dataStore)
         loginViewModel =
             ViewModelProvider(
                 this@LoginActivity,
-                ViewModelFactory(appPreferences)
+                ViewModelFactory(APIUtils.getAPIService(), appPreferences)
             )[LoginViewModel::class.java]
     }
 
@@ -70,7 +67,63 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(
                     binding.edLoginEmail.text.toString(),
                     binding.edLoginPassword.text.toString()
-                )
+                ).observe(this) { result ->
+                    if (result != null) {
+                        setLoading(result is Result.Loading)
+
+                        when (result) {
+                            is Result.Success -> {
+                                if (!(result.data.error as Boolean) && result.data.loginData != null) {
+                                    result.data.loginData.apply {
+                                        if (name != null && userId != null && token != null) {
+                                            loginViewModel.saveLoginInfo(name, userId, token)
+                                        }
+                                    }
+
+                                    Toast.makeText(
+                                        this@LoginActivity,
+                                        getString(R.string.login_success),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    startActivity(
+                                        Intent(
+                                            this@LoginActivity,
+                                            MainActivity::class.java
+                                        )
+                                    )
+                                    finish()
+                                } else {
+                                    Toast.makeText(
+                                        this@LoginActivity,
+                                        result.data.message ?: getString(R.string.login_error),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                            is Result.Error -> {
+                                var message: String = getString(R.string.login_error)
+
+                                try {
+                                    Gson().fromJson(
+                                        (result.error as HttpException).response()?.errorBody()
+                                            ?.string(),
+                                        LoginResponse::class.java
+                                    ).message?.let {
+                                        message = it
+                                    }
+                                } catch (e: Exception) {
+                                }
+
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    }
+                }
             } else {
                 Toast.makeText(
                     this@LoginActivity,
@@ -80,33 +133,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        loginViewModel.getLoginData().observe(this@LoginActivity) { loginData: LoginResponse ->
-            if (!(loginData.error as Boolean)) {
-                Toast.makeText(
-                    this@LoginActivity,
-                    getString(R.string.login_success),
-                    Toast.LENGTH_SHORT
-                ).show()
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
-            }
-        }
-
-        loginViewModel.getLoginError()
-            .observe(this@LoginActivity) { loginError: SingleEvent<String> ->
-                loginError.getData()?.let {
-                    Toast.makeText(this@LoginActivity, it, Toast.LENGTH_SHORT).show()
-                }
-            }
-
-        loginViewModel.isLoading().observe(this@LoginActivity) { isLoading: Boolean ->
-            binding.apply {
-                loginProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-                loginButton.isEnabled = !isLoading
-                edLoginEmail.isEnabled = !isLoading
-                edLoginPassword.isEnabled = !isLoading
-            }
-        }
     }
 
     private fun playAnimation() {
@@ -130,21 +156,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun isLogin() {
-        val appPreferences = AppPreferences.getInstance(dataStore)
-
-        var bearerToken: String
-
-        runBlocking {
-            bearerToken = appPreferences.getTokenPrefs().first() ?: ""
-        }
-
-        if (bearerToken.isNotEmpty()) {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            finish()
-            startActivity(intent)
+    private fun setLoading(isLoading: Boolean) {
+        binding.apply {
+            loginProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            loginButton.isEnabled = !isLoading
+            edLoginEmail.isEnabled = !isLoading
+            edLoginPassword.isEnabled = !isLoading
         }
     }
+
 
 }

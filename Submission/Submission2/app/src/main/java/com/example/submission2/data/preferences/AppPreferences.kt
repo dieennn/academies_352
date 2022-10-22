@@ -1,9 +1,10 @@
-package com.example.submission2.util
+package com.example.submission2.data.preferences
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.example.submission2.util.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -12,13 +13,14 @@ class AppPreferences private constructor(private val dataStore: DataStore<Prefer
     private val USERID_KEY = stringPreferencesKey(Constants.USERID_PREFERENCES)
     private val TOKEN_KEY = stringPreferencesKey(Constants.TOKEN_PREFERENCES)
 
+    // name and userid can be removed
     fun getNamePrefs(): Flow<String?> {
         return dataStore.data.map {
             it[NAME_KEY]
         }
     }
 
-    suspend fun saveNamePrefs(name: String){
+    suspend fun saveNamePrefs(name: String) {
         dataStore.edit {
             it[NAME_KEY] = name
         }
@@ -30,7 +32,7 @@ class AppPreferences private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    suspend fun saveUserIDPrefs(userId: String){
+    suspend fun saveUserIDPrefs(userId: String) {
         dataStore.edit {
             it[USERID_KEY] = userId
         }
@@ -42,19 +44,18 @@ class AppPreferences private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    suspend fun saveTokenPrefs(token: String){
+    suspend fun saveTokenPrefs(token: String) {
         dataStore.edit {
             it[TOKEN_KEY] = token
         }
     }
 
-    suspend fun clearPrefs(){
+    suspend fun clearPrefs() {
         dataStore.edit {
             it.clear()
         }
     }
 
-    // TODO companion object paling bawah
     companion object {
         @Volatile
         private var INSTANCE: AppPreferences? = null

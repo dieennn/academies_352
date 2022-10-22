@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/root_padding"
-    tools:context=".ui.view.main.MainActivity">
+    android:paddingHorizontal="@dimen/root_padding"
+    tools:context=".ui.view.main.fragment.MainStoriesFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/main_swipe_refresh_layout"
+        android:id="@+id/fragment_main_stories_swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/main_rv_stories"
+            android:id="@+id/fragment_main_stories_rv_stories"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_story" />
@@ -21,31 +21,13 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/main_fab_create"
+        android:id="@+id/fragment_main_stories_fab_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:backgroundTint="@color/blue_300"
+        android:layout_margin="20dp"
         android:contentDescription="@string/create_story"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_nav_host"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/main_bottom_nav_view"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/main_nav" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/main_bottom_nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

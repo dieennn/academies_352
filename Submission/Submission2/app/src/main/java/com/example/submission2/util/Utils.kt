@@ -2,9 +2,11 @@ package com.example.submission2.util
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.example.submission2.R
 import java.text.ParseException
@@ -12,6 +14,19 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
+object Utils {
+    fun getPlaceholderImage(context: Context): Bitmap? {
+        return AppCompatResources.getDrawable(context, R.drawable.ic_baseline_broken_image_24)
+            ?.toBitmap(256, 256)
+    }
+
+    fun checkPermission(context: Context, permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            context,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+}
 
 fun getPlaceholderImage(context: Context): Bitmap? {
     return AppCompatResources.getDrawable(context, R.drawable.ic_baseline_broken_image_24)

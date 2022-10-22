@@ -16,5 +16,9 @@ class Constants {
         const val NAME_PREFERENCES: String = "NAME_PREFERENCES"
         const val USERID_PREFERENCES: String = "USERID_PREFERENCES"
         const val TOKEN_PREFERENCES: String = "TOKEN_PREFERENCES"
+
+        // PAGING NUMBERS
+        const val STORY_PAGING_PAGE_SIZE = 5
+        const val STORY_PAGING_PREFETCH_DISTANCE = 2
     }
 }

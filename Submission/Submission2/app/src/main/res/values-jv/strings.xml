@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" tools:ignore="Typos">BPAAI - SM1</string>
+    <string name="app_name" tools:ignore="Typos">BPAAI - SM2</string>
     <string name="signup">Daftar</string>
     <string name="login">Ketik</string>
     <string name="message_welcome_page">Abadikan momen sing larang karo Intfd Story saiki!</string>
@@ -50,5 +50,18 @@
     <string name="preview_picture">Preview Gambar</string>
     <string name="detail_picture">Rincian Gambar</string>
     <string name="twice_back">Pencet tombol balik ping pindo kanggo metu</string>
+    <string name="create_story_failed">Gagal gawe cerito</string>
+    <string name="register_error">Gagal ndaftar</string>
+    <string name="maps">Peta</string>
+    <string name="stories">Cerito</string>
+    <string name="refresh_maps">Nganyari Peta</string>
+    <string name="get_location">Njikuk Lokasi</string>
+    <string name="location_not_found">Lokasi ga ditemokne. Jajal meneh</string>
+    <string name="location_permission_not_granted">Lokasi saiki ora bisa dijupuk tanpa ijin lokasi</string>
+    <string name="location_permission_note">Kanggo entuk lokasi saiki, sampeyan kudu menehi ijin lokasi sing tepat</string>
+    <string name="no_location">Tidak ada lokasi</string>
+    <string name="error_data">Kesalahan njupuk data</string>
+    <string name="create_story_form_error">Mangga nambah gambar lan katrangan</string>
+    <string name="create_story_error">Unggahan gagal</string>
 
 </resources>

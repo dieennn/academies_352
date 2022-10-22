@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" tools:ignore="Typos">BPAAI - SM1</string>
+    <string name="app_name" tools:ignore="Typos">BPAAI - SM2</string>
     <string name="signup">Daftar</string>
     <string name="login">Masuk</string>
     <string name="message_welcome_page">Abadikan momen berharga bersama Intfd Story sekarang!</string>
@@ -49,5 +49,18 @@
     <string name="preview_picture">Pratinjau Gambar</string>
     <string name="detail_picture">Detail Gambar</string>
     <string name="twice_back">Ketuk tombol kembali dua kali untuk keluar</string>
+    <string name="create_story_failed">Gagal membuat cerita</string>
+    <string name="register_error">Pendaftaran gagal</string>
+    <string name="maps">Peta</string>
+    <string name="stories">Cerita</string>
+    <string name="refresh_maps">Perbarui Peta</string>
+    <string name="get_location">Dapatkan Lokasi</string>
+    <string name="location_not_found">Lokasi tidak ditemukan. Coba lagi</string>
+    <string name="location_permission_not_granted">Lokasi saat ini tidak dapat diambil tanpa izin lokasi</string>
+    <string name="location_permission_note">Untuk mendapatkan lokasi saat ini, Anda harus memberikan izin lokasi yang tepat</string>
+    <string name="no_location">Tidak ada lokasi</string>
+    <string name="error_data">Kesalahan mendapatkan data</string>
+    <string name="create_story_form_error">Harap tambahkan gambar dan deskripsi</string>
+    <string name="create_story_error">Gagal mengunggah</string>
 
 </resources>

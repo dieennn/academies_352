@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,22 +11,20 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.submission2.R
-import com.example.submission2.adapter.StoryListAdapter
+import com.example.submission2.data.network.APIUtils
+import com.example.submission2.data.preferences.AppPreferences
 import com.example.submission2.databinding.ActivityMainBinding
-import com.example.submission2.ui.view.create.CreateStoryActivity
 import com.example.submission2.ui.view.welcome.WelcomeActivity
-import com.example.submission2.util.AppPreferences
 import com.example.submission2.util.Constants
-import com.example.submission2.util.ViewModelFactory
+import com.example.submission2.ui.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -39,15 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
-    private val storyListAdapter = StoryListAdapter()
-
-    private val intentCreateStoryResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == INTENT_CREATE_STORY) {
-                storyListAdapter.submitList(listOf())
-                mainViewModel.loadStories(null, null, Location.LOCATION_OFF)
-            }
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +51,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         setupViewModel()
+
+        setupWithNavController(
+            binding.mainBottomNavView,
+            (supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment).navController
+        )
     }
 
     private fun setupViewModel() {
@@ -70,51 +63,8 @@ class MainActivity : AppCompatActivity() {
         mainViewModel =
             ViewModelProvider(
                 this@MainActivity,
-                ViewModelFactory(appPreferences)
+                ViewModelFactory(APIUtils.getAPIService(), appPreferences)
             )[MainViewModel::class.java]
-
-        binding.mainRvStories.adapter = storyListAdapter
-
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding.mainRvStories.layoutManager = GridLayoutManager(this, 2)
-        } else {
-            binding.mainRvStories.layoutManager = LinearLayoutManager(this)
-        }
-
-        binding.mainSwipeRefreshLayout.setOnRefreshListener {
-            storyListAdapter.submitList(listOf())
-            mainViewModel.loadStories(null, null, Location.LOCATION_OFF)
-        }
-
-        binding.mainFabCreate.setOnClickListener {
-            if (!isPermissionGranted(Manifest.permission.CAMERA)) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(Manifest.permission.CAMERA),
-                    REQUEST_PERMISSION_CODE
-                )
-            } else {
-                intentCreateStoryResult.launch(Intent(this, CreateStoryActivity::class.java))
-            }
-        }
-
-        mainViewModel.isLoading().observe(this) { isLoading ->
-            binding.mainSwipeRefreshLayout.isRefreshing = isLoading
-        }
-
-        mainViewModel.getStoriesData().observe(this) { storiesData ->
-            storyListAdapter.submitList(storiesData.listStory)
-        }
-
-        mainViewModel.getStoriesError().observe(this) { storiesError ->
-            storiesError.getData()?.let {
-                Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            mainViewModel.loadStories(null, null, Location.LOCATION_OFF)
-        }, 250)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

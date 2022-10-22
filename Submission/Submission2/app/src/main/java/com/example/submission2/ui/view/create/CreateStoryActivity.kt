@@ -1,13 +1,16 @@
 package com.example.submission2.ui.view.create
 
+import android.Manifest
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Looper
 import android.provider.MediaStore
 import android.text.TextUtils
 import android.view.View
@@ -17,17 +20,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asFlow
 import com.bumptech.glide.Glide
 import com.example.submission2.BuildConfig
 import com.example.submission2.R
+import com.example.submission2.data.network.APIUtils
+import com.example.submission2.data.network.Result
+import com.example.submission2.data.network.models.CreateStoryResponse
+import com.example.submission2.data.preferences.AppPreferences
 import com.example.submission2.databinding.ActivityCreateStoryBinding
 import com.example.submission2.ui.view.main.MainActivity
-import com.example.submission2.util.AppPreferences
 import com.example.submission2.util.Constants
-import com.example.submission2.util.ViewModelFactory
-import com.example.submission2.util.getPlaceholderImage
-import com.example.submission2.util.response.CreateStoryResponse
+import com.example.submission2.ui.ViewModelFactory
+import com.example.submission2.util.Utils
+import com.google.android.gms.location.*
+import com.google.gson.Gson
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.HttpException
 import java.io.*
+import java.util.concurrent.TimeUnit
 
 class CreateStoryActivity : AppCompatActivity() {
     private val Context.dataStore by preferencesDataStore(name = Constants.PREFERENCES_NAME)
@@ -37,6 +53,16 @@ class CreateStoryActivity : AppCompatActivity() {
     private lateinit var tempCameraImagePath: String
     private var currentImageFile: File? = null
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val locationCallback = object : LocationCallback() {}
+    private val locationRequest = LocationRequest.create().apply {
+        interval = TimeUnit.SECONDS.toMillis(1)
+        maxWaitTime = TimeUnit.SECONDS.toMillis(1)
+        priority = Priority.PRIORITY_HIGH_ACCURACY
+    }
+
+    private var currentLocation: Location? = null
+
     private val intentCameraResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
@@ -45,7 +71,7 @@ class CreateStoryActivity : AppCompatActivity() {
 
                 Glide.with(this)
                     .load(resultImage)
-                    .placeholder(R.drawable.logo)
+                    .placeholder(R.drawable.ic_baseline_broken_image_24)
                     .error(R.drawable.ic_baseline_broken_image_24)
                     .into(binding.createIvPreview)
             }
@@ -65,6 +91,23 @@ class CreateStoryActivity : AppCompatActivity() {
             }
         }
 
+    private val locationPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true -> getLocation()
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true -> getLocation()
+                else -> {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.location_permission_not_granted),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -80,9 +123,21 @@ class CreateStoryActivity : AppCompatActivity() {
         createStoryViewModel =
             ViewModelProvider(
                 this,
-                ViewModelFactory(appPreferences)
+                ViewModelFactory(APIUtils.getAPIService(), appPreferences)
             )[CreateStoryViewModel::class.java]
 
+        fusedLocationClient =
+            LocationServices.getFusedLocationProviderClient(this@CreateStoryActivity)
+
+        setCameraBtn()
+        setClearBtn()
+        setGalleryBtn()
+        setGetLocationBtn()
+        setSubmitBtn()
+    }
+
+
+    private fun setCameraBtn() {
         binding.createBtnCamera.setOnClickListener {
             val tempFile = createImageTempFile(this)
 
@@ -100,7 +155,9 @@ class CreateStoryActivity : AppCompatActivity() {
 
             intentCameraResult.launch(intent)
         }
+    }
 
+    private fun setGalleryBtn() {
         binding.createBtnGallery.setOnClickListener {
             intentGalleryResult.launch(
                 Intent.createChooser(
@@ -109,59 +166,100 @@ class CreateStoryActivity : AppCompatActivity() {
                 )
             )
         }
+    }
 
+    private fun setClearBtn() {
         binding.createBtnClear.setOnClickListener {
-            binding.createEtDescription.text = null
             currentImageFile = null
             Glide.with(this)
                 .load(
-                    getPlaceholderImage(this)
+                    Utils.getPlaceholderImage(this)
                 )
                 .into(binding.createIvPreview)
         }
+    }
 
+    private fun setGetLocationBtn() {
+        binding.createBtnGetLocation.setOnClickListener {
+            getLocation()
+        }
+    }
+
+    private fun setSubmitBtn() {
         binding.createBtnSubmit.setOnClickListener {
             if (currentImageFile != null && !TextUtils.isEmpty(binding.createEtDescription.text.toString())) {
-                val compressed = compressImageFile(currentImageFile!!)
+                val compressed = compressImageFile(currentImageFile as File)
+                var bearerToken: String
+
+                runBlocking {
+                    bearerToken = createStoryViewModel.getBearerToken().asFlow().first() ?: ""
+                }
 
                 createStoryViewModel.submit(
-                    object : OnSuccessCallback<CreateStoryResponse> {
-                        override fun onSuccess(message: CreateStoryResponse) {
-                            Toast.makeText(
-                                this@CreateStoryActivity,
-                                message.message,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                    bearerToken,
+                    binding.createEtDescription.text.toString()
+                        .toRequestBody("text/plain".toMediaType()),
+                    MultipartBody.Part.createFormData(
+                        "photo",
+                        compressed.name,
+                        compressed.asRequestBody("image/jpeg".toMediaType())
+                    ),
+                    currentLocation?.latitude?.toString()
+                        ?.toRequestBody("text/plain".toMediaType()),
+                    currentLocation?.longitude?.toString()
+                        ?.toRequestBody("text/plain".toMediaType())
+                ).observe(this) { result ->
+                    if (result != null) {
+                        setLoading(result is Result.Loading)
 
-                            setResult(MainActivity.INTENT_CREATE_STORY)
-                            finish()
+                        when (result) {
+                            is Result.Success -> {
+                                if (!(result.data.error as Boolean)) {
+                                    Toast.makeText(
+                                        this@CreateStoryActivity,
+                                        result.data.message,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    setResult(MainActivity.INTENT_CREATE_STORY)
+                                    finish()
+                                } else {
+                                    Toast.makeText(
+                                        this,
+                                        result.data.message
+                                            ?: getString(R.string.create_story_error),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                            is Result.Error -> {
+                                var message: String = getString(R.string.create_story_error)
+
+                                try {
+                                    Gson().fromJson(
+                                        (result.error as HttpException).response()?.errorBody()
+                                            ?.string(),
+                                        CreateStoryResponse::class.java
+                                    ).message?.let {
+                                        message = it
+                                    }
+                                } catch (e: Exception) {
+                                }
+
+                                Toast.makeText(
+                                    this@CreateStoryActivity,
+                                    message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
-                    },
-                    binding.createEtDescription.text.toString(),
-                    compressed,
-                    null,
-                    null
-                )
+                    }
+                }
             } else {
-                Toast.makeText(this, "Please add the image and description", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-
-        createStoryViewModel.isLoading().observe(this) { isLoading ->
-            binding.apply {
-                createProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-                createBtnCamera.isEnabled = !isLoading
-                createBtnGallery.isEnabled = !isLoading
-                createBtnClear.isEnabled = !isLoading
-                createEtDescription.isEnabled = !isLoading
-                createBtnSubmit.isEnabled = !isLoading
-            }
-        }
-
-        createStoryViewModel.getCreateError().observe(this) { createError ->
-            createError.getData()?.let {
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.create_story_form_error),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -169,6 +267,16 @@ class CreateStoryActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startLocationUpdates()
+    }
+
+    override fun onPause() {
+        stopLocationUpdates()
+        super.onPause()
     }
 
     private fun compressImageFile(file: File): File {
@@ -217,5 +325,69 @@ class CreateStoryActivity : AppCompatActivity() {
         outputStream.close()
 
         return myFile
+    }
+
+    private fun getLocation() {
+        if (Utils.checkPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) &&
+            Utils.checkPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    currentLocation = location
+
+                    binding.createTvCurrentCoordinate.text = String.format(
+                        getString(R.string.coordinate_format),
+                        location.latitude,
+                        location.longitude
+                    )
+                } else {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.location_not_found),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        } else {
+            locationPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+
+            Toast.makeText(
+                this,
+                getString(R.string.location_permission_note),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.apply {
+            createProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            createBtnCamera.isEnabled = !isLoading
+            createBtnGallery.isEnabled = !isLoading
+            createBtnClear.isEnabled = !isLoading
+            createEtDescription.isEnabled = !isLoading
+            createBtnSubmit.isEnabled = !isLoading
+        }
+    }
+
+    private fun startLocationUpdates() {
+        if (Utils.checkPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) &&
+            Utils.checkPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.requestLocationUpdates(
+                locationRequest,
+                locationCallback,
+                Looper.getMainLooper()
+            )
+        }
+    }
+
+    private fun stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 }

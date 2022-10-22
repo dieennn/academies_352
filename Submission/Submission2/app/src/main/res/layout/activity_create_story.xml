@@ -74,15 +74,42 @@
             tools:text="" />
 
         <Button
+            android:id="@+id/create_btn_get_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
+            android:text="@string/get_location"
+            app:layout_constraintBottom_toTopOf="@id/create_btn_submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/create_et_description" />
+
+        <TextView
+            android:id="@+id/create_tv_current_coordinate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@string/no_location"
+            app:layout_constraintBottom_toBottomOf="@id/create_btn_get_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/create_btn_get_location"
+            app:layout_constraintTop_toTopOf="@id/create_btn_get_location"
+            tools:text="-1.23456, 100.12345" />
+
+        <Button
             android:id="@+id/create_btn_submit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/bg_button"
             android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/create_et_description" />
+            app:layout_constraintTop_toBottomOf="@id/create_tv_current_coordinate" />
 
         <ProgressBar
             android:id="@+id/create_progress_bar"

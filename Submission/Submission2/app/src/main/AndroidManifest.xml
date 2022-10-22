@@ -11,6 +11,8 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -18,11 +20,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Submission1">
+        android:theme="@style/Theme.Submission2">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDAcsXFc8FcH658wlkxAO6a4ADAyg2xv-4" />
+
         <activity
-            android:name="com.example.submission2.ui.view.splash.SplashActivity"
+            android:name=".ui.view.splash.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.Submission1.NoActionBar">
+            android:theme="@style/Theme.Submission2.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,18 +37,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.submission2.ui.view.welcome.WelcomeActivity"
+            android:name=".ui.view.welcome.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.submission2.ui.view.signup.SignupActivity"
+            android:name=".ui.view.signup.SignupActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.submission2.ui.view.login.LoginActivity"
+            android:name=".ui.view.login.LoginActivity"
             android:exported="false" />
 
-<!--        AFTER LOGIN-->
+        <!--        AFTER LOGIN-->
         <activity
-            android:name="com.example.submission2.ui.view.main.MainActivity"
+            android:name=".ui.view.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,11 +58,11 @@
         </activity>
 
         <activity
-            android:name="com.example.submission2.ui.view.create.CreateStoryActivity"
+            android:name=".ui.view.create.CreateStoryActivity"
             android:exported="false" />
 
         <activity
-            android:name="com.example.submission2.ui.view.detail.DetailActivity"
+            android:name=".ui.view.detail.DetailActivity"
             android:exported="false" />
 
         <provider
