@@ -7,7 +7,7 @@ import com.example.submission2.data.network.APIService
 import com.example.submission2.data.network.Result
 import com.example.submission2.data.network.models.LoginResponse
 import com.example.submission2.data.network.models.RegisterResponse
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 import kotlinx.coroutines.runBlocking
 
 class AuthRepository(

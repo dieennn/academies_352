@@ -7,7 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.databinding.ActivitySplashBinding
 import com.example.submission2.ui.view.main.MainActivity
 import com.example.submission2.ui.view.welcome.WelcomeActivity

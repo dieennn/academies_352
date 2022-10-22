@@ -20,7 +20,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.submission2.R
 import com.example.submission2.data.network.APIUtils
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.databinding.ActivityMainBinding
 import com.example.submission2.ui.view.welcome.WelcomeActivity
 import com.example.submission2.util.Constants

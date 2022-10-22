@@ -1,4 +1,4 @@
-package com.example.submission2.ui.adapter
+package com.example.submission2.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.submission2.R
-import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.models.Story
 import com.example.submission2.databinding.ItemStoryBinding
 import com.example.submission2.ui.OnItemClick
+import com.example.submission2.util.covertTimeToText
+import com.example.submission2.util.formatCreatedAt
 
 class StoryListAdapter(private val onItemClick: OnItemClick<Story, ItemStoryBinding>) :
     PagingDataAdapter<Story, StoryListAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -39,7 +40,7 @@ class StoryListAdapter(private val onItemClick: OnItemClick<Story, ItemStoryBind
             holder.binding.itemStoryTvName.text = data.name
             holder.binding.itemStoryTvCreatedAt.text = String.format(
                 context.getString(R.string.created_at_format),
-                APIUtils.formatCreatedAt(data.createdAt ?: "-")
+                covertTimeToText(formatCreatedAt(data.createdAt.toString())).toString()
             )
 
             holder.itemView.setOnClickListener {

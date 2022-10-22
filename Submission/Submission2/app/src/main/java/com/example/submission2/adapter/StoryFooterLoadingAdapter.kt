@@ -1,4 +1,4 @@
-package com.example.submission2.ui.adapter
+package com.example.submission2.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

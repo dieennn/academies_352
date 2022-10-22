@@ -24,13 +24,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission2.R
 import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.models.Story
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.databinding.FragmentMainStoriesBinding
 import com.example.submission2.databinding.ItemStoryBinding
 import com.example.submission2.ui.OnItemClick
 import com.example.submission2.ui.OnPagingError
-import com.example.submission2.ui.adapter.StoryFooterLoadingAdapter
-import com.example.submission2.ui.adapter.StoryListAdapter
+import com.example.submission2.adapter.StoryFooterLoadingAdapter
+import com.example.submission2.adapter.StoryListAdapter
 import com.example.submission2.ui.view.create.CreateStoryActivity
 import com.example.submission2.ui.view.detail.DetailActivity
 import com.example.submission2.ui.view.main.MainActivity

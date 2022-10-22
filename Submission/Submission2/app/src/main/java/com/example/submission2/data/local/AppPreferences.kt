@@ -1,4 +1,4 @@
-package com.example.submission2.data.preferences
+package com.example.submission2.data.local
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

@@ -27,7 +27,7 @@ import com.example.submission2.R
 import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.Result
 import com.example.submission2.data.network.models.CreateStoryResponse
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.databinding.ActivityCreateStoryBinding
 import com.example.submission2.ui.view.main.MainActivity
 import com.example.submission2.util.Constants

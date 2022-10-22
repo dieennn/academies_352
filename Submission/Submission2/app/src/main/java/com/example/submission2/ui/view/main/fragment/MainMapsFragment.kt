@@ -18,7 +18,7 @@ import com.example.submission2.R
 import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.Result
 import com.example.submission2.data.network.models.StoryResponse
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.databinding.FragmentMainMapsBinding
 import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.ui.view.main.MainViewModel
@@ -39,7 +39,7 @@ class MainMapsFragment : Fragment(), OnMapReadyCallback {
     private lateinit var binding: FragmentMainMapsBinding
     private lateinit var mapView: MapView
 
-    private lateinit var googleMap: GoogleMap
+    private lateinit var mMap: GoogleMap
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
@@ -178,20 +178,20 @@ class MainMapsFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap) {
-        googleMap = map
+        mMap = map
 
-        googleMap.uiSettings.apply {
+        mMap.uiSettings.apply {
             isCompassEnabled = true
             isIndoorLevelPickerEnabled = true
             isMapToolbarEnabled = false
-            isZoomControlsEnabled = false
+            isZoomControlsEnabled = true
         }
 
         if ((requireActivity().resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
             Configuration.UI_MODE_NIGHT_YES
         ) {
             try {
-                googleMap.setMapStyle(
+                mMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                         requireContext(),
                         R.raw.map_themes
@@ -203,7 +203,7 @@ class MainMapsFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun addMarkersAndAnimateCamera(storiesData: StoryResponse) {
-        if (context != null && this::googleMap.isInitialized) {
+        if (context != null && this::mMap.isInitialized) {
             val boundBuilder = LatLngBounds.builder()
 
             storiesData.listStory.forEach { story ->
@@ -211,7 +211,7 @@ class MainMapsFragment : Fragment(), OnMapReadyCallback {
                     if (it.name != null && it.lat != null && it.lon != null) {
                         val coordinate = LatLng(it.lat, it.lon)
 
-                        googleMap.addMarker(
+                        mMap.addMarker(
                             MarkerOptions().apply {
                                 icon(
                                     AppCompatResources.getDrawable(
@@ -232,6 +232,7 @@ class MainMapsFragment : Fragment(), OnMapReadyCallback {
                                     )
                                 )
                                 title(it.name)
+                                icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                             }
                         )
 
@@ -240,7 +241,7 @@ class MainMapsFragment : Fragment(), OnMapReadyCallback {
                 }
             }
 
-            googleMap.animateCamera(
+            mMap.animateCamera(
                 CameraUpdateFactory.newLatLngBounds(
                     boundBuilder.build(),
                     resources.displayMetrics.widthPixels,

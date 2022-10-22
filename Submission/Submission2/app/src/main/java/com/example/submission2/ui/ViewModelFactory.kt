@@ -9,7 +9,7 @@ import com.example.submission2.ui.view.login.LoginViewModel
 import com.example.submission2.ui.view.main.MainViewModel
 import com.example.submission2.ui.view.signup.SignupViewModel
 import com.example.submission2.data.repository.StoryRepository
-import com.example.submission2.data.preferences.AppPreferences
+import com.example.submission2.data.local.AppPreferences
 
 class ViewModelFactory(
     apiService: APIService,
