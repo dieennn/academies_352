@@ -15,10 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asFlow
 import com.example.submission2.R
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.Result
-import com.example.submission2.data.network.models.StoryResponse
-import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.response.StoryResponse
 import com.example.submission2.databinding.FragmentMainMapsBinding
 import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.ui.view.main.MainViewModel

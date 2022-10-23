@@ -1,9 +1,9 @@
 package com.example.submission2.data.network
 
-import com.example.submission2.data.network.models.CreateStoryResponse
-import com.example.submission2.data.network.models.LoginResponse
-import com.example.submission2.data.network.models.RegisterResponse
-import com.example.submission2.data.network.models.StoryResponse
+import com.example.submission2.data.network.response.CreateStoryResponse
+import com.example.submission2.data.network.response.LoginResponse
+import com.example.submission2.data.network.response.RegisterResponse
+import com.example.submission2.data.network.response.StoryResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*

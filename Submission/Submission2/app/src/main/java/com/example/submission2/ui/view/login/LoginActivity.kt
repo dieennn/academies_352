@@ -14,14 +14,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.submission2.R
-import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.Result
-import com.example.submission2.data.network.models.LoginResponse
+import com.example.submission2.data.network.response.LoginResponse
 import com.example.submission2.databinding.ActivityLoginBinding
+import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.ui.view.main.MainActivity
 import com.example.submission2.util.Constants
-import com.example.submission2.ui.ViewModelFactory
 import com.google.gson.Gson
 import retrofit2.HttpException
 

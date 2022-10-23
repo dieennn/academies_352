@@ -13,13 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.submission2.R
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.Result
-import com.example.submission2.data.network.models.RegisterResponse
-import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.response.RegisterResponse
 import com.example.submission2.databinding.ActivitySignupBinding
-import com.example.submission2.util.Constants
 import com.example.submission2.ui.ViewModelFactory
+import com.example.submission2.util.Constants
 import com.google.gson.Gson
 import retrofit2.HttpException
 

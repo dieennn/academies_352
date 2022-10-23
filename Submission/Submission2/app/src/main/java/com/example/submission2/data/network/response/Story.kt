@@ -1,4 +1,4 @@
-package com.example.submission2.data.network.models
+package com.example.submission2.data.network.response
 
 import android.os.Parcel
 import android.os.Parcelable

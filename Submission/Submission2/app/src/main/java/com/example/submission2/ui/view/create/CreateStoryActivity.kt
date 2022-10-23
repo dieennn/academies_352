@@ -24,14 +24,14 @@ import androidx.lifecycle.asFlow
 import com.bumptech.glide.Glide
 import com.example.submission2.BuildConfig
 import com.example.submission2.R
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.network.Result
-import com.example.submission2.data.network.models.CreateStoryResponse
-import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.response.CreateStoryResponse
 import com.example.submission2.databinding.ActivityCreateStoryBinding
+import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.ui.view.main.MainActivity
 import com.example.submission2.util.Constants
-import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.util.Utils
 import com.google.android.gms.location.*
 import com.google.gson.Gson

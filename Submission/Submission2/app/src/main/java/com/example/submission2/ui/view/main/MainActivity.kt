@@ -19,12 +19,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.submission2.R
-import com.example.submission2.data.network.APIUtils
 import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.APIUtils
 import com.example.submission2.databinding.ActivityMainBinding
+import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.ui.view.welcome.WelcomeActivity
 import com.example.submission2.util.Constants
-import com.example.submission2.ui.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -129,6 +129,6 @@ class MainActivity : AppCompatActivity() {
 
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this, getString(R.string.twice_back), Toast.LENGTH_SHORT).show()
-        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }

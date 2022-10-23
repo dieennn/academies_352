@@ -1,8 +1,11 @@
-package com.example.submission2.data.network.models
+package com.example.submission2.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class CreateStoryResponse(
+data class StoryResponse(
+    @field:SerializedName("listStory")
+    val listStory: List<Story>,
+
     @field:SerializedName("error")
     val error: Boolean? = null,
 

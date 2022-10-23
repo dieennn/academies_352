@@ -3,11 +3,11 @@ package com.example.submission2.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.data.network.APIService
 import com.example.submission2.data.network.Result
-import com.example.submission2.data.network.models.LoginResponse
-import com.example.submission2.data.network.models.RegisterResponse
-import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.response.LoginResponse
+import com.example.submission2.data.network.response.RegisterResponse
 import kotlinx.coroutines.runBlocking
 
 class AuthRepository(

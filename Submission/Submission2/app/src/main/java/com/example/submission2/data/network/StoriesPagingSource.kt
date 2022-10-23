@@ -2,7 +2,7 @@ package com.example.submission2.data.network
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.submission2.data.network.models.Story
+import com.example.submission2.data.network.response.Story
 import com.example.submission2.ui.view.main.Location
 
 class StoriesPagingSource(private val apiService: APIService, private val bearerToken: String) :

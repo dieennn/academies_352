@@ -22,22 +22,22 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission2.R
-import com.example.submission2.data.network.APIUtils
-import com.example.submission2.data.network.models.Story
+import com.example.submission2.adapter.StoryFooterLoadingAdapter
+import com.example.submission2.adapter.StoryListAdapter
 import com.example.submission2.data.local.AppPreferences
+import com.example.submission2.data.network.APIUtils
+import com.example.submission2.data.network.response.Story
 import com.example.submission2.databinding.FragmentMainStoriesBinding
 import com.example.submission2.databinding.ItemStoryBinding
 import com.example.submission2.ui.OnItemClick
 import com.example.submission2.ui.OnPagingError
-import com.example.submission2.adapter.StoryFooterLoadingAdapter
-import com.example.submission2.adapter.StoryListAdapter
+import com.example.submission2.ui.ViewModelFactory
 import com.example.submission2.ui.view.create.CreateStoryActivity
 import com.example.submission2.ui.view.detail.DetailActivity
 import com.example.submission2.ui.view.main.MainActivity
 import com.example.submission2.ui.view.main.MainViewModel
 import com.example.submission2.util.Constants
 import com.example.submission2.util.Utils
-import com.example.submission2.ui.ViewModelFactory
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 

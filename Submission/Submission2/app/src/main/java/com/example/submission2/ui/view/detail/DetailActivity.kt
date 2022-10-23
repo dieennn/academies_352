@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.submission2.R
-import com.example.submission2.data.network.models.Story
+import com.example.submission2.data.network.response.Story
 import com.example.submission2.databinding.ActivityDetailBinding
 import com.example.submission2.util.Constants
 import com.example.submission2.util.covertTimeToText

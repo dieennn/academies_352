@@ -1,11 +1,8 @@
-package com.example.submission2.data.network.models
+package com.example.submission2.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginResponse(
-    @field:SerializedName("loginResult")
-    val loginData: LoginData? = null,
-
+data class RegisterResponse(
     @field:SerializedName("error")
     val error: Boolean? = null,
 
