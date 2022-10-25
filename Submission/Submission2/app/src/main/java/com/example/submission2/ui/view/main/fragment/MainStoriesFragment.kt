@@ -22,7 +22,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission2.R
-import com.example.submission2.adapter.StoryFooterLoadingAdapter
+import com.example.submission2.adapter.StoryPagingLoadingAdapter
 import com.example.submission2.adapter.StoryListAdapter
 import com.example.submission2.data.local.AppPreferences
 import com.example.submission2.data.network.APIUtils
@@ -143,7 +143,7 @@ class MainStoriesFragment : Fragment() {
     private fun setAdapter() {
         binding.fragmentMainStoriesRvStories.adapter =
             storyListAdapter.withLoadStateFooter(
-                footer = StoryFooterLoadingAdapter(
+                footer = StoryPagingLoadingAdapter(
                     object : OnPagingError {
                         override fun onError(message: String) {
                             Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
