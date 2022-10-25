@@ -10,10 +10,10 @@ import com.example.submission2.R
 import com.example.submission2.databinding.ItemStoryLoadingBinding
 import com.example.submission2.ui.OnPagingError
 
-class StoryFooterLoadingAdapter(
+class StoryPagingLoadingAdapter(
     private val onPagingError: OnPagingError
 ) :
-    LoadStateAdapter<StoryFooterLoadingAdapter.ViewHolder>() {
+    LoadStateAdapter<StoryPagingLoadingAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, loadState: LoadState) {
         holder.binding.itemStoryLoadingProgressBar.isVisible = loadState is LoadState.Loading
 

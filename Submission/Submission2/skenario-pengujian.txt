@@ -76,7 +76,25 @@
     - Ketika menyimpan data login
       - Memastikan method AuthRepository.saveLoginInfo telah dipanggil
 
-3. Create Story
+3. Main Story
+    - Ketika mengambil token
+      - Memastikan data tidak bernilai null
+      - Memastikan data sama dengan data dummy
+
+    - Ketika sukses mengambil list story
+      - Memastikan data tidak bernilai null
+      - Memastikan data sama dengan data dummy
+      - Memastikan jumlah data sama dengan jumlah data dummy
+
+    - Ketika sukses mengambil list peta
+      - Memastikan data tidak bernilai null
+      - Memastikan data adalah Result.Success
+      - Memastikan data sama dengan data dummy
+
+    - Ketika melakukan logout
+      - Memastikan method AuthRepository.logout telah dipanggil
+
+4. Create Story
     - Ketika sukses membuat story
       - Memastikan data tidak bernilai null
       - Memastikan data adalah Result.Success

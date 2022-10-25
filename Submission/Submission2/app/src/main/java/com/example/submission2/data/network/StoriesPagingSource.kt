@@ -1,5 +1,6 @@
 package com.example.submission2.data.network
 
+import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.submission2.data.network.response.Story
@@ -36,5 +37,9 @@ class StoriesPagingSource(private val apiService: APIService, private val bearer
 
     companion object {
         private const val INITIAL_PAGE_INDEX = 1
+
+        fun snapshot(stories: List<Story>): PagingData<Story> {
+            return PagingData.from(stories)
+        }
     }
 }
